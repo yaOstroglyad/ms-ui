@@ -1,0 +1,15 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+.theme-font-color {
+  color: $theme-color !important;
+}
+
+.flex {
+  display: flex
+}
+
+.flex-center {
+  @include flex-center;
+}
+
