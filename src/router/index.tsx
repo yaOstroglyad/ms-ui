@@ -1,20 +1,20 @@
-import { MainRoutes } from './routes'
 import * as React from 'react';
-import {setupInterceptor} from '../utils/http';
-import store from '../store';
 import {BrowserRouter} from 'react-router-dom';
 
+import { MainRoutes } from './routes'
+
 export default function () {
-  const [mounted, setMounted] = React.useState(false)
+  const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
-    setupInterceptor(store)
     setMounted(true)
-  }, [])
+  }, []);
 
-  return mounted ? (
+  return mounted
+    ? (
     <BrowserRouter>
       <MainRoutes />
     </BrowserRouter>
-  ) : null
+  )
+    : null;
 }

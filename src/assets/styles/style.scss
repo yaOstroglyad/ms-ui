@@ -1,18 +1,23 @@
-ol,
-ul,
-li {
-  list-style: none;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-a {
-  text-decoration: none;
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
 }
 
-pre {
-  white-space: pre-wrap;
-  word-break: break-all;
+html:focus-within {
+  scroll-behavior: smooth;
 }
 
-em {
-  font-style: normal;
+body {
+  text-rendering: optimizeSpeed;
+}
+
+#ms-ui-root {
+  min-height: 100vh;
 }

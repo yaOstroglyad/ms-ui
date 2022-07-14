@@ -1,50 +1,52 @@
 import {useRoutes} from 'react-router-dom';
-import PrivateRoute from '../private-route';
-import NoMatch from '../app/modules/exception/404';
-import MainEntry from '../app/modules/main';
-import HomeIndex from '../app/modules/index';
-import Login from '../app/modules/login';
 
-export function MainRoutes() {
-  const _Login = <PrivateRoute element={Login} meta={{
-    title: 'Login page title'
-  }} />
+import NoMatch from '../app/not-found-page/404';
+import {Main} from '../app/main/main.component';
+import {PrivateRoute} from '../app/_shared/components/private-route/private-route.component';
+import {Login} from '../app/login/login.component';
+
+export const MainRoutes = () => {
+  const _Login = (
+    <PrivateRoute element={Login} meta={{
+      title: 'Login page title',
+    }}/>
+  );
 
   return useRoutes([
     {
       path: '/',
-      element: _Login
+      element: _Login,
     },
     {
       path: '/login',
-      element: _Login
+      element: _Login,
     },
     {
-      path: '/home',
-      element: <MainEntry/>,
+      path: '/main',
+      element: <Main/>,
       children: [
         {
           path: 'index',
-          element: <PrivateRoute element={HomeIndex} meta={{
+          element: <PrivateRoute element={Main} meta={{
             requiresAuth: true,
-            title: 'Home page title'
+            title: 'Home page title',
           }}/>,
         },
         {
           path: '*',
           element: <PrivateRoute element={NoMatch} meta={{
             requiresAuth: false,
-            title: '404 Not Found'
-          }}/>
+            title: '404 Not Found',
+          }}/>,
         },
-      ]
+      ],
     },
     {
       path: '*',
       element: <PrivateRoute element={NoMatch} meta={{
         requiresAuth: false,
-        title: '404 Not Found'
-      }}/>
+        title: '404 Not Found',
+      }}/>,
     },
-  ])
-}
+  ]);
+};
