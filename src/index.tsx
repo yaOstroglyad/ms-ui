@@ -3,12 +3,12 @@ import { createRoot } from 'react-dom/client';
 
 import './assets/styles/style.scss';
 
-import AppRoute from './router';
+import {AppComponent} from './app/app.component';
 
 const container = document.getElementById('ms-ui-root');
 const root = createRoot(container!);
 root.render(
   <React.StrictMode>
-    <AppRoute />
+    <AppComponent />
   </React.StrictMode>
 );

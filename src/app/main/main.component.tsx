@@ -1,5 +1,5 @@
-import { Outlet } from 'react-router-dom';
-import * as React from 'react';
+import React from 'react';
+import {Outlet} from 'react-router-dom';
 
 import './main.style.scss';
 import {MainSelectionPart} from './main-selection-part/main-selection-part.component';
