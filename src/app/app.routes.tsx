@@ -15,7 +15,7 @@ export const AppRoutes = () => useRoutes([
     element: <Login/>,
   },
   {
-    path: '/main',
+    path: '/main/*',
     element: <Main/>,
   },
   {
