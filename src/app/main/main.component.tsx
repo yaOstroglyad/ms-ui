@@ -12,7 +12,6 @@ export const Main: React.FC = () => (
       <Container maxWidth="lg">
         <MainSelectionPart selectionItems={MAIN_SELECTION_PART_ITEMS}/>
         <main className="main">
-            <DataGridDemo />
           <MainRoutes />
         </main>
       </Container>
