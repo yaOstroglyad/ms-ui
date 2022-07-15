@@ -17,4 +17,4 @@ export const useAuth = (): UseAuth => {
     login,
     logout,
   };
-}
+};

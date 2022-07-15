@@ -17,14 +17,10 @@ type AuthProviderProps = {
 export const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
   const [authState, setAuthState] = React.useState<AuthState>({} as AuthState);
   const login = async (email: string, password: string) => {
-    const tokenResponse = await fetch('https://reqres.in//api/login', {method: 'POST', body: JSON.stringify({email, password})});
-    type JSONResponse = {
-      data?: {token: string};
-      errors?: Array<{message: string}>;
-    };
-    const {data}: JSONResponse = await tokenResponse.json()
+    const tokenResponse = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+    const data = await tokenResponse.json();
     if (data) {
-      setAuthState({user: {id: ''}, token: data.token, isLogged: Boolean(data.token)});
+      setAuthState({user: {id: ''}, token: 'token', isLogged: true});
     }
   };
   const logout = () => {};

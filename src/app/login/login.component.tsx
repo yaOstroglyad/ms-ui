@@ -6,10 +6,13 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
+import {useAuth} from '../_shared/hooks/auth/use-auth';
+
 import './login.style.scss';
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
+  const {login} = useAuth();
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -17,6 +20,7 @@ export const Login: React.FC = () => {
       userName: data.get('userName'),
       password: data.get('password'),
     });
+    login(data.get('userName') as string, data.get('password') as string);
     navigate('/main', {replace: true});
   };
 
