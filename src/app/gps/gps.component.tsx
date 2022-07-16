@@ -6,8 +6,10 @@ import {GPS_SELECTION_PART_ITEMS} from './constants/gps-selection-part-items';
 import {GpsRoutes} from './gps.routes';
 
 export const Gps: React.FC = () => (
-    <Container maxWidth="lg">
-      <SelectionPart selectionItems={GPS_SELECTION_PART_ITEMS}/>
-      <GpsRoutes />
-    </Container>
+    <>
+        <SelectionPart selectionItems={GPS_SELECTION_PART_ITEMS}/>
+        <Container maxWidth="lg">
+          <GpsRoutes />
+        </Container>
+    </>
 );

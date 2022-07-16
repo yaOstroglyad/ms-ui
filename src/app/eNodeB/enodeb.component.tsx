@@ -6,8 +6,10 @@ import {ENODEB_SELECTION_PART_ITEMS} from './constants/enodeb-selection-part-ite
 import {EnodebRoutes} from './enodeb.routes';
 
 export const Enodeb: React.FC = () => (
-    <Container maxWidth="lg">
-      <SelectionPart selectionItems={ENODEB_SELECTION_PART_ITEMS}/>
-      <EnodebRoutes />
-    </Container>
+    <>
+        <SelectionPart selectionItems={ENODEB_SELECTION_PART_ITEMS}/>
+        <Container maxWidth="lg">
+            <EnodebRoutes />
+        </Container>
+    </>
 );

@@ -6,8 +6,10 @@ import {ADMIN_SELECTION_PART_ITEMS} from './constants/admin-selection-part-items
 import {AdminRoutes} from './admin.routes';
 
 export const Admin: React.FC = () => (
-    <Container maxWidth="lg">
-      <SelectionPart selectionItems={ADMIN_SELECTION_PART_ITEMS}/>
-      <AdminRoutes />
-    </Container>
+    <>
+        <SelectionPart selectionItems={ADMIN_SELECTION_PART_ITEMS}/>
+        <Container maxWidth="lg">
+            <AdminRoutes />
+        </Container>
+    </>
 );

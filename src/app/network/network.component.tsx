@@ -6,8 +6,10 @@ import {NetworkRoutes} from './network.routes';
 import {NETWORK_SELECTION_PART_ITEMS} from './constants/network-selection-part-items';
 
 export const Network: React.FC = () => (
-    <Container maxWidth="lg">
-      <SelectionPart selectionItems={NETWORK_SELECTION_PART_ITEMS}/>
-      <NetworkRoutes />
-    </Container>
+    <>
+        <SelectionPart selectionItems={NETWORK_SELECTION_PART_ITEMS}/>
+        <Container maxWidth="lg">
+          <NetworkRoutes />
+        </Container>
+    </>
 );

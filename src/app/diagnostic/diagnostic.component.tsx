@@ -6,8 +6,10 @@ import {DIAGNOSTIC_SELECTION_PART_ITEMS} from './constants/diagnostic-selection-
 import {DiagnosticRoutes} from './diagnostic.routes';
 
 export const Diagnostic: React.FC = () => (
-    <Container maxWidth="lg">
-      <SelectionPart selectionItems={DIAGNOSTIC_SELECTION_PART_ITEMS}/>
-      <DiagnosticRoutes />
-    </Container>
+    <>
+        <SelectionPart selectionItems={DIAGNOSTIC_SELECTION_PART_ITEMS}/>
+        <Container maxWidth="lg">
+            <DiagnosticRoutes />
+        </Container>
+    </>
 );

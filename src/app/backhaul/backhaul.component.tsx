@@ -6,8 +6,10 @@ import {BACKHAUL_SELECTION_PART_ITEMS} from './constants/backhaul-selection-part
 import {BackhaulRoutes} from './backhaul.routes';
 
 export const Backhaul: React.FC = () => (
-    <Container maxWidth="lg">
-      <SelectionPart selectionItems={BACKHAUL_SELECTION_PART_ITEMS}/>
-      <BackhaulRoutes />
-    </Container>
+    <>
+        <SelectionPart selectionItems={BACKHAUL_SELECTION_PART_ITEMS}/>
+        <Container maxWidth="lg">
+            <BackhaulRoutes />
+        </Container>
+    </>
 );
