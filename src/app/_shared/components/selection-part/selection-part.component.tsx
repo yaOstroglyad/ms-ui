@@ -16,8 +16,8 @@ export const SelectionPart: React.FC<SelectionPartPropsInterface> = ({selectionI
 
     return (
         <Box sx={{width: '100%'}}>
-            <Tabs  TabIndicatorProps={{style: {display: "none"}}}
-                   value={value}
+            <Tabs TabIndicatorProps={{style: {display: "none"}}}
+                  value={value}
                   onChange={handleChange}
                   variant="scrollable"
                   scrollButtons={false}
