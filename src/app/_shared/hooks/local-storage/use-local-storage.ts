@@ -19,9 +19,9 @@ const localstorageApiFactory = <T>(key: string) => ({
   }
 });
 
-const useLocalStorageApi = <T>(key: string) => React.useMemo(
+const useLocalStorage = <T>(key: string) => React.useMemo(
   () => localstorageApiFactory<T>(key),
   [ key ]
 );
 
-export { useLocalStorageApi };
+export { useLocalStorage };

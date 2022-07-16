@@ -3,8 +3,8 @@ import React from 'react';
 import {AuthContext} from './auth.provider';
 
 interface UseAuth {
-  login: (email: string, password: string) => void;
-  logout: () => void;
+  login: (email: string, password: string) => Promise<void>;
+  logout: () => Promise<void>;
   isLogged: boolean;
   user: Record<string, unknown> | null;
 }

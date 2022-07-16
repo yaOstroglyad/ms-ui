@@ -21,13 +21,7 @@ export const AppRoutes = () => {
     },
     {
       path: '/main/*',
-      element: <GuardedRoute isAllowed={isLogged} redirectPath="/login"/>,
-      children: [
-        {
-          index: true,
-          element: <Main />,
-        },
-      ],
+      element: <GuardedRoute isAllowed={isLogged} redirectPath="/login"><Main /></GuardedRoute>,
     },
     {
       path: '*',
