@@ -1,6 +1,6 @@
 import {SelectionPartItem} from '../../_shared/constants/selection-part-item.interface';
 
-export const MAIN_SELECTION_PART_ITEMS: ReadonlyArray<SelectionPartItem> = [
+export const SYSTEM_SELECTION_PART_ITEMS: ReadonlyArray<SelectionPartItem> = [
   { label: 'System', route: './system', },
   { label: 'Network', route: './network', },
   { label: 'eNodeB', route: './eNodeB', },

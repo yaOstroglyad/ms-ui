@@ -4,17 +4,9 @@ import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import {Link} from 'react-router-dom';
+import {SelectionPartPropsInterface} from 'app/_shared/constants/selection-part-props.interface';
 
-export interface MainSelectionPartItem {
-  label: string;
-  route: string;
-}
-
-type MainSelectionPartProps = {
-  selectionItems: ReadonlyArray<MainSelectionPartItem>;
-};
-
-export const MainSelectionPart: React.FC<MainSelectionPartProps> = ({selectionItems}) => (
+export const SelectionPart: React.FC<SelectionPartPropsInterface> = ({selectionItems}) => (
   <Box sx={{width: '100%'}}>
     <Tabs aria-label="main-navigation-part" value={false}>
       {selectionItems.map(item => (
