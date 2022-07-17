@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
-import {useAuth} from '../_shared/hooks/auth/use-auth';
+import {useAuth} from '../_shared/auth-module/use-auth';
 
 import './login.style.scss';
 
