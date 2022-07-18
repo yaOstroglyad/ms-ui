@@ -1,10 +1,16 @@
 import {AuthService} from '../models/auth-service';
 
-type AuthServiceConstructor<Options> = (options: Options) => AuthService
+interface JwtAuthServiceResponse {
+  token: string;
+}
 
+type AuthServiceConstructor<Options> = (options: Options) => AuthService<JwtAuthServiceResponse>
 type JwtAuthServiceConstructorOptions = {}
 
-export const jwtAuthServiceConstructor: AuthServiceConstructor<JwtAuthServiceConstructorOptions> = (): AuthService => ({
-  login: (userName: string, password: string) => Promise.resolve({}),
+export const jwtAuthServiceConstructor: AuthServiceConstructor<JwtAuthServiceConstructorOptions> = (): AuthService<JwtAuthServiceResponse> => ({
+  login: (userName: string, password: string) => {
+    return Promise.resolve({token: 'token'})
+  },
   logout: () => Promise.resolve(),
+  refresh: () => Promise.resolve({token: 'token'}),
 });

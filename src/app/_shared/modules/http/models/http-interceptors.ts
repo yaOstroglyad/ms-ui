@@ -3,10 +3,15 @@ import {HttpMethod} from '../types/http-method';
 import {HttpResponse} from './http-response';
 import {HttpRequestOptions} from './http-request-options';
 
-type HttpRequestInterceptor = ({url, method, options}: {url: string, method: HttpMethod, options: HttpRequestOptions}) => HttpRequestOptions;
-type HttpResponseInterceptor = <T>({response}: {response: HttpResponse<T>}) => Promise<HttpResponse<T>>;
+export type HttpRequestInterceptor = ({url, method, options}: {url: string, method: HttpMethod, options: HttpRequestOptions}) => HttpRequestOptions;
+export type HttpResponseInterceptor = <T>({response}: {response: HttpResponse<T>}) => Promise<HttpResponse<T>>;
+
+export interface HttpInterceptorApi<Interceptor> {
+  add: (interceptor: Interceptor) => void;
+  forEach: (fn: (interceptor: Interceptor) => void) => void;
+}
 
 export interface HttpInterceptors {
-  readonly request?: HttpRequestInterceptor[];
-  readonly response?: HttpResponseInterceptor[];
+  readonly request: HttpInterceptorApi<HttpRequestInterceptor>;
+  readonly response: HttpInterceptorApi<HttpResponseInterceptor>;
 }

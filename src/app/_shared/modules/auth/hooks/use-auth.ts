@@ -1,20 +1,18 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 
 import {AuthContext} from '../contexts/auth-context';
 
 interface UseAuth {
-  login: (email: string, password: string) => Promise<void>;
+  login: (userName: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
-  isLogged: boolean;
-  user: Record<string, unknown> | null;
+  readonly isLogged: boolean;
 }
 
 export const useAuth = (): UseAuth => {
   const {state, login, logout} = React.useContext(AuthContext);
-  return {
-    user: state.user,
+  return useMemo(() => ({
     isLogged: state.isLogged,
     login,
     logout,
-  };
+  }), [state, login, logout]);
 };

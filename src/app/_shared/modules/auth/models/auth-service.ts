@@ -1,4 +1,5 @@
-export interface AuthService {
-  login: (userName: string, password: string) => Promise<Record<string, unknown>>;
+export interface AuthService<LoginResponse> {
+  login: (userName: string, password: string) => Promise<LoginResponse>;
   logout: () => Promise<void>;
+  refresh: () => Promise<LoginResponse>;
 }
