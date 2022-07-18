@@ -4,7 +4,7 @@ import {AuthState} from '../models/auth.state';
 
 export interface AuthContextApi {
   readonly state: AuthState;
-  login: (email: string, password: string) => Promise<void>;
+  login: (userName: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
 }
 

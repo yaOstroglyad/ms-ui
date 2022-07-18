@@ -4,19 +4,19 @@ import {AuthState} from '../models/auth.state';
 import {AuthService} from '../models/auth-service';
 import {AuthContext, AuthContextApi} from '../contexts/auth-context';
 
-type AuthProviderProps = {
-  authService: AuthService;
+type AuthProviderProps<LoginResponse> = {
+  authService: AuthService<LoginResponse>;
   children: React.ReactNode;
 };
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({authService,children}) => {
+export const AuthProvider: React.FC<AuthProviderProps<unknown>> = ({authService,children}) => {
   const [authState, setAuthState] = React.useState<AuthState>({} as AuthState);
   const login = useCallback(
-    async (email: string, password: string) => {
+    async (userName: string, password: string) => {
       try {
-       const loginResult = await authService.login(email, password);
+       const loginResult = await authService.login(userName, password);
        if (loginResult) {
-         const state = {user: {}, token: 'token', isLogged: true} as AuthState;
+         const state = {token: 'token', isLogged: true} as AuthState;
          setAuthState(state);
        }
       } catch (error) {}

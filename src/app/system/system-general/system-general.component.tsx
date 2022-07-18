@@ -6,7 +6,11 @@ import Box from '@mui/material/Box';
 import DataGridDemo from '../../_shared/components/table/table.component';
 
 export const SystemGeneral: React.FC = () => (
-  <Box sx={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
+  <Box sx={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1.5rem',
+  }}>
     <Typography variant="h5">General with table :</Typography>
     <DataGridDemo/>
   </Box>
