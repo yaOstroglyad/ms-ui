@@ -2,7 +2,7 @@ import {useRoutes} from 'react-router-dom';
 import React from 'react';
 
 import {GuardedRoute} from './_shared/components/guarded-route/guarded-route.component';
-import {useAuth} from './_shared/hooks/auth/use-auth';
+import {useAuth} from './_shared/modules/auth/hooks/use-auth';
 
 const Login = React.lazy(() => import('./login/login.component').then(({Login}) => ({default: Login})));
 const Main = React.lazy(() => import('./main/main.component').then(({Main}) => ({default: Main})));

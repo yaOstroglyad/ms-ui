@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {AuthContext} from './auth.provider';
+import {AuthContext} from '../contexts/auth-context';
 
 interface UseAuth {
   login: (email: string, password: string) => Promise<void>;
