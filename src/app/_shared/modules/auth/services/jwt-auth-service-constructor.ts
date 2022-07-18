@@ -1,10 +1,10 @@
-import {AuthService} from './auth-service.interface';
+import {AuthService} from '../models/auth-service';
 
 type AuthServiceConstructor<Options> = (options: Options) => AuthService
 
 type JwtAuthServiceConstructorOptions = {}
 
 export const jwtAuthServiceConstructor: AuthServiceConstructor<JwtAuthServiceConstructorOptions> = (): AuthService => ({
-  login: (email: string, passwprd: string) => Promise.resolve({}),
+  login: (userName: string, password: string) => Promise.resolve({}),
   logout: () => Promise.resolve(),
 });

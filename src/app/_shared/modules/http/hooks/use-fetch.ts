@@ -1,37 +1,36 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 
 import {HttpContext} from '../contexts/http-context';
-import {FetchResult} from '../models/fetch-result.interface';
+import {FetchOperation, FetchResult} from '../models/fetch-result.interface';
 import {HttpMethod} from '../types/http-method';
 import {HttpRequestOptions} from '../models/http-request-options';
 
-type UseFetchOptions = {
+export type FetchOperationOptions = {
   readonly url: string;
   readonly method: HttpMethod;
   readonly headers?: HeadersInit;
-  readonly body?: BodyInit;
+  readonly body?: Record<string, any>;
   readonly params?: Record<string, unknown>;
-  readonly responseMapper?: <R, T>(response: R) => T;
 };
 
-export const useFetch = <T>(options: UseFetchOptions): FetchResult<T> => {
+export const useFetch = <T>(hookOptions?: Partial<FetchOperationOptions>): FetchResult<T> => {
   const {client, interceptors: {request: requestInterceptors = []}} = React.useContext(HttpContext);
   const [data, setData] = React.useState<T>();
   const [error, setError] = React.useState<Error>();
-  const [isLoading, setIsLoading] = React.useState(false);
-  const fetchData = async ({url, method, headers, body, params}: UseFetchOptions) => {
+  const [isLoaded, setIsLoaded] = React.useState(false);
+  const operation = useCallback(async (operationOptions: FetchOperationOptions) => {
+    const {url, method, headers, body, params} = {...hookOptions, ...operationOptions};
     try {
       const request = requestInterceptors.reduce((interceptedRequest, interceptor) => interceptor({url, method, options: interceptedRequest}), {headers, body, params} as HttpRequestOptions);
       const response = await client.request<T>(url, method, request);
-      setData(response.data);
+      const data = response.data;
+      setData(data);
+      return data;
     } catch (error) {
       setError(new Error('Fetch error.'));
     } finally {
-      setIsLoading(false);
+      setIsLoaded(false);
     }
-  };
-  React.useEffect(() => {
-    fetchData(options);
-  }, []);
-  return {data, error, isLoading};
+  }, [client, hookOptions, requestInterceptors]) as FetchOperation<T>;
+  return {data, isLoaded, error, operation};
 };

@@ -1,15 +1,8 @@
 import React, {useCallback, useMemo} from 'react';
 
-import {AuthState} from './auth.state';
-import {AuthService} from './auth-service.interface';
-
-export interface AuthContext {
-  readonly state: AuthState;
-  login: (email: string, password: string) => Promise<void>;
-  logout: () => Promise<void>;
-}
-
-export const AuthContext = React.createContext<AuthContext>({} as AuthContext);
+import {AuthState} from '../models/auth.state';
+import {AuthService} from '../models/auth-service';
+import {AuthContext, AuthContextApi} from '../contexts/auth-context';
 
 type AuthProviderProps = {
   authService: AuthService;
@@ -34,7 +27,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({authService,children}
     () => authService.logout(),
     [authService],
   );
-  const contextValue: AuthContext = useMemo(
+  const contextValue: AuthContextApi = useMemo(
     () => ({
       state: authState,
       login,
