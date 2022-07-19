@@ -13,14 +13,13 @@ import './login.style.scss';
 export const Login: React.FC = () => {
   const navigate = useNavigate();
   const {login} = useAuth();
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      userName: data.get('userName'),
-      password: data.get('password'),
-    });
-    login(data.get('userName') as string, data.get('password') as string);
+    const userName =  data.get('userName') as string;
+    const password = data.get('password') as string;
+    console.log({userName, password});
+    await login(userName, password);
     navigate('/main', {replace: true});
   };
 
