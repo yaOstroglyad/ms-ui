@@ -36,6 +36,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({authService, cacheSto
       logout,
     }),
     [
+      token,
       login,
       logout,
     ],
