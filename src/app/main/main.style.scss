@@ -1,3 +1,190 @@
 .main {
   height: 100vh;
 }
+
+// Changes for header + container
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  .center {
+    display: flex;
+    margin: 30px 80px 30px 80px;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.main-bg {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: rgb(22 59 102);
+  z-index: 12;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 30px;
+  border-radius: 20px 20px 20px 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 135px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.center {
+  display: flex;
+  margin: 30px 160px 30px 160px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  font-size: 1.8rem;
+  z-index: 9;
+}
+
+header .str {
+  color: #153b66;
+  font-weight: 800;
+}
+
+header .widgets {
+  display: flex;
+  gap: 60px;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-dot {
+  background: none;
+  width: 10px !important;
+  height: 10px !important;
+  float: left;
+  margin: 3px !important;
+}
+
+header li {
+  overflow: hidden;
+  transition: 0.5s cubic-bezier(0.97, 0.02, 0.44, 0.99);
+}
+
+button {
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: white;
+  background-color: #153b66;
+  border-radius: 100px;
+  padding: 10px 30px 10px 30px;
+  transform-origin: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+header .icon-burger {
+  position: absolute;
+  right: 5%;
+  display: none;
+}
+
+header .icon-burger .line {
+  width: 30px;
+  height: 4px;
+  background-color: white;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  header .logo {
+    z-index: 99;
+  }
+  .container {
+    margin: 30px 10px 30px 30px;
+  }
+  header .widgets {
+    float: none;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    right: 0;
+    bottom: 0;
+    z-index: 9;
+    width: auto;
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 0 60px;
+    background-color: rgba(0, 0, 0, 0.568);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+    transition: 0.5s cubic-bezier(0.97, 0.02, 0.44, 0.99);
+  }
+  button {
+    border: none;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 2rem;
+    color: white;
+    background-color: blueviolet;
+    border-radius: 100px;
+    padding: 10px 40px 10px 40px;
+  }
+}
+
+
+
+/* indicator */
+.typing-indicator {
+  background-color: #E6E7ED;
+  will-change: transform;
+  height: 26px;
+  width: 70px;
+  border-radius: 13px 13px 13px 13px;
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 0 auto;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.typing-indicator span {
+  height: 6px;
+  width: 6px;
+  margin: 0 1px;
+  background-color: #9E9EA1;
+  display: block;
+  border-radius: 50%;
+  opacity: 0.7;
+  @for $i from 1 through 3 {
+    &:nth-of-type(#{$i}) {
+      animation: 1s blink infinite ($i * .2333s);
+    }
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes bulge {
+  50% {
+    transform: scale(1.05);
+  }
+}
