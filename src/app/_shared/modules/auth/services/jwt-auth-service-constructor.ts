@@ -4,9 +4,12 @@ type AuthServiceConstructor<Options> = (options: Options) => AuthService;
 type JwtAuthServiceConstructorOptions = {};
 
 export const jwtAuthServiceConstructor: AuthServiceConstructor<JwtAuthServiceConstructorOptions> = (): AuthService => ({
-  login: async (userName: string, password: string) => {
+  login: async (username: string, password: string) => {
     try {
-      const response = await fetch('/login', {method: 'POST', body: JSON.stringify({userName, password})});
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {'Content-type': 'application/json'},
+        body: JSON.stringify({username, password})});
       return await response.json();
     } catch (error) {
       console.error(error);

@@ -163,18 +163,25 @@ header .icon-burger .line {
   align-items: center;
 }
 .typing-indicator span {
-  height: 6px;
-  width: 6px;
+  height: 8px;
+  width: 8px;
   margin: 0 1px;
   background-color: #9E9EA1;
   display: block;
   border-radius: 50%;
-  opacity: 0.7;
-  @for $i from 1 through 3 {
-    &:nth-of-type(#{$i}) {
-      animation: 1s blink infinite ($i * .2333s);
-    }
-  }
+  opacity: 0.2;
+}
+
+.hz-05 {
+  animation: 2s blink infinite (1 * .1s)
+}
+
+.hz-1 {
+  animation: 1s blink infinite (1 * .1s)
+}
+
+.hz-2 {
+  animation: .5s blink infinite (1 * .1s)
 }
 
 @keyframes blink {
