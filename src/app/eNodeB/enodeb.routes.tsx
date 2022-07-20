@@ -6,7 +6,7 @@ const EnodebSpectrum = lazy(() => import('./enodeb-spectrum/enodeb-spectrum.comp
 export const EnodebRoutes = () => useRoutes([
   {
     index: true,
-    element: <Navigate to="spectrum" replace />
+    element: <Navigate to="performances" replace />
   },
   {
     path: 'spectrum',

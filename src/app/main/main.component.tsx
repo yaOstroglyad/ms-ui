@@ -50,7 +50,9 @@ export const Main: React.FC = () => {
 
     const {operation: fetchLedInfo, data: ledInfo} = useHttp<LedInfo>({url: '/api/led/info', method: 'GET'});
     useEffect(() => {
-        fetchLedInfo({});
+        setInterval(() => {
+            fetchLedInfo({});
+        }, 1000);
     }, []);
 
     const initPowerLedProtocol = (protocolNumber: number | undefined): Protocol => {

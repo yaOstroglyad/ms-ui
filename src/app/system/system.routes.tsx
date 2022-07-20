@@ -6,7 +6,7 @@ const SystemGeneral = lazy(() => import('./system-general/system-general.compone
 export const SystemRoutes = () => useRoutes([
   {
     index: true,
-    element: <Navigate to="general" replace />,
+    element: <Navigate to="status" replace />,
   },
   {
     path: 'general',

@@ -6,7 +6,7 @@ const NetworkTunneling = lazy(() => import('./network-tunneling/network-tunnelin
 export const NetworkRoutes = () => useRoutes([
   {
     index: true,
-    element: <Navigate to="tunneling" replace />
+    element: <Navigate to="ip-address" replace />
   },
   {
     path: 'tunneling',
