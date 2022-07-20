@@ -17,7 +17,7 @@ const jwtAuthService = jwtAuthServiceConstructor({});
 const httpClient = nativeHttpClient as HttpClient;
 
 export const AppComponent: React.FC = () => (
-  <AuthProvider authService={jwtAuthService}>
+  <AuthProvider authService={jwtAuthService} cacheStorage={localStorage}>
     <HttpProvider client={httpClient}>
       <AuthInterceptor>
         <BrowserRouter>

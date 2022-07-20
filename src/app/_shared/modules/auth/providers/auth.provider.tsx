@@ -1,22 +1,24 @@
 import React, {useCallback, useMemo} from 'react';
 
-import {AuthState} from '../models/auth.state';
 import {AuthService} from '../models/auth-service';
 import {AuthContext, AuthContextApi} from '../contexts/auth-context';
 
 type AuthProviderProps = {
   authService: AuthService;
+  cacheStorage: Storage;
   children: React.ReactNode;
 };
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({authService,children}) => {
-  const [authState, setAuthState] = React.useState<AuthState>({} as AuthState);
+const CACHE_STORAGE_KEY_NAME = 'authToken';
+
+export const AuthProvider: React.FC<AuthProviderProps> = ({authService, cacheStorage,children}) => {
+  const token = cacheStorage.getItem(CACHE_STORAGE_KEY_NAME);
   const login = useCallback(
     async (userName: string, password: string) => {
       try {
        const {token} = await authService.login(userName, password);
        if (token) {
-         setAuthState({token, isLogged: Boolean(token)});
+         cacheStorage.setItem(CACHE_STORAGE_KEY_NAME, token);
        }
       } catch (error) {}
     },
@@ -28,12 +30,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({authService,children}
   );
   const contextValue: AuthContextApi = useMemo(
     () => ({
-      state: authState,
+      state: {token, isLogged: Boolean(token)},
       login,
       logout,
     }),
     [
-      authState,
       login,
       logout,
     ],

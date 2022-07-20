@@ -1,4 +1,4 @@
 export interface AuthState {
-  readonly token: string;
+  readonly token: string | null;
   readonly isLogged: boolean;
 }
